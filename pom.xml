@@ -59,7 +59,7 @@
 						</packagingExcludes> -->
 
 					<warName>WebWS</warName>
-					<outputDirectory>F:\Tools\jboss-7\jboss-eap-6.2\standalone\deployments</outputDirectory>
+					<!-- <outputDirectory>F:\Tools\jboss-7\jboss-eap-6.2\standalone\deployments</outputDirectory> -->
 				</configuration>
 			</plugin>
 		</plugins>
