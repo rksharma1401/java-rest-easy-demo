@@ -2,6 +2,7 @@ package com.test.rest.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -96,6 +97,15 @@ public class HelloWorldService {
 			llstUser.add(r);
 		}
 		return Response.status(200).entity(llstUser).build();
+
+	}
+	
+	@GET
+	@Path("getDefaultTimeZone") 
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getCurrentDate() {
+			 
+		return TimeZone.getDefault().getDisplayName();  
 
 	}
 
