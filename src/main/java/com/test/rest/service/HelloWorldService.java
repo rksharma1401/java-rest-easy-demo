@@ -1,7 +1,10 @@
 package com.test.rest.service;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 import javax.ws.rs.GET;
@@ -16,6 +19,8 @@ import org.jboss.resteasy.annotations.GZIP;
 import org.jboss.resteasy.annotations.cache.Cache;
 
 import com.test.rest.vo.User;
+
+import testsinglejar.specificpackage.objects.Object1;
 /**<p>
  *	jax RS web service using resteasy and javax.rs
  * </p>
@@ -100,12 +105,34 @@ public class HelloWorldService {
 
 	}
 	
+	 
+	 
 	@GET
 	@Path("getDefaultTimeZone") 
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getCurrentDate() {
 			 
 		return TimeZone.getDefault().getDisplayName();  
+
+	}
+	
+	@GET
+	@Path("getCurrentDate/{param : .+}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getCurrentDate(@PathParam("param") String locale) { 
+		return TimeZone.getTimeZone(locale).getDisplayName();  
+
+	}
+	
+	@GET
+	@Path("getMap")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String,String> getMap() { 
+		Map<String, String> outputMap=new HashMap<String, String>();
+		 
+		outputMap.put("1", "One");
+		outputMap.put("from module", "FROM mODULE mAP"); 
+		return outputMap;  
 
 	}
 
