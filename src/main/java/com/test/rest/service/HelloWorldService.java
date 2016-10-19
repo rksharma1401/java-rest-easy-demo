@@ -19,8 +19,7 @@ import org.jboss.resteasy.annotations.GZIP;
 import org.jboss.resteasy.annotations.cache.Cache;
 
 import com.test.rest.vo.User;
-
-import testsinglejar.specificpackage.objects.Object1;
+ 
 /**<p>
  *	jax RS web service using resteasy and javax.rs
  * </p>
