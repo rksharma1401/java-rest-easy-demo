@@ -3,11 +3,11 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<display-name>WebService Application</display-name>
- 
+
 	<!-- Auto scan REST service -->
 	<context-param>
 		<param-name>resteasy.scan</param-name>
-		<param-value>true</param-value>
+		<param-value>false</param-value>
 	</context-param>
 
 	<!-- this need same with resteasy servlet url-pattern -->
@@ -15,18 +15,17 @@
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
 		<param-value>/rest</param-value>
 	</context-param>
-
-	<!-- <listener>
-		<listener-class>
-			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
-		</listener-class>
-	</listener> -->
+	<context-param>
+		<param-name>resteasy.resources</param-name>
+		<param-value>com.test.rest.service.HelloWorldService</param-value>
+	</context-param>
+	<!-- <listener> <listener-class> org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap 
+		</listener-class> </listener> -->
 
 	<servlet>
 		<servlet-name>resteasy-servlet</servlet-name>
 		<servlet-class>
-			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-		</servlet-class>
+			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

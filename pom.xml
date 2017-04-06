@@ -25,7 +25,12 @@
 			<version>2.2.1.GA</version>
 			<!-- <scope>provided</scope> -->
 		</dependency>
-
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.0</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-multipart-provider</artifactId>
@@ -42,22 +47,28 @@
 			<artifactId>resteasy-jackson-provider</artifactId>
 			<version>3.0.19.Final</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.test</groupId>
+			<artifactId>maven</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>WebWS</finalName>
 
 		<plugins>
-		<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
-        <configuration>
-          <!-- or whatever version you use -->
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<!-- or whatever version you use -->
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
@@ -67,9 +78,9 @@
 					<!-- <packagingExcludes> WEB-INF/lib/commons-logging-*.jar, %regex[WEB-INF/lib/log4j-(?!over-slf4j).*.jar] 
 						</packagingExcludes> -->
 
-					 <source>1.7</source>
-          			 <target>1.7</target>
-          			 <outputDirectory>${project.build.directory}</outputDirectory>
+					<source>1.7</source>
+					<target>1.7</target>
+					<outputDirectory>${project.build.directory}</outputDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
