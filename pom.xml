@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.test</groupId>
-	<artifactId>WebWS</artifactId>
+	<groupId>ravi</groupId>
+	<artifactId>javaresteasy</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1</version>
-	<name>WebWS Maven Webapp</name>
+	<name>javaresteasy Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -14,7 +14,13 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-6.0</artifactId>
+			<version>1.0.0.Final</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
 		<!-- <dependency> <groupId>com.sun.jersey</groupId> <artifactId>jersey-server</artifactId> 
 			<version>1.8</version> </dependency> https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet-core 
 			<dependency> <groupId>org.glassfish.jersey.containers</groupId> <artifactId>jersey-container-servlet-core</artifactId> 
@@ -47,14 +53,9 @@
 			<artifactId>resteasy-jackson-provider</artifactId>
 			<version>3.0.19.Final</version>
 		</dependency>
-		<dependency>
-			<groupId>com.test</groupId>
-			<artifactId>maven</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 	<build>
-		<finalName>WebWS</finalName>
+		<finalName>javaresteasy</finalName>
 
 		<plugins>
 
@@ -81,8 +82,35 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<outputDirectory>${project.build.directory}</outputDirectory>
+					
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	
+	 <profiles>
+		<profile>
+			<!-- When built in OpenShift the 'openshift' profile will be used when 
+				invoking mvn. -->
+			<!-- Use this profile for any OpenShift specific customization your app 
+				will need. -->
+			<!-- By default that is to put the resulting archive into the 'webapps' 
+				folder. -->
+			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+			<id>openshift</id>
+			<build>
+				<finalName>javaresteasy</finalName>
+				<plugins>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.1.1</version>
+						<configuration>
+							<outputDirectory>webapps</outputDirectory>
+							<warName>ROOT</warName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

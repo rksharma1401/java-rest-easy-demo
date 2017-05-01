@@ -32,5 +32,26 @@
 		<servlet-name>resteasy-servlet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
+    <display-name>SoapService</display-name>
+    <servlet-name>SoapService</servlet-name>
+    <servlet-class>
+        com.study.soap.service.SoapService
+    </servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>SoapService</servlet-name>
+    <url-pattern>/ws/SoapService</url-pattern>
+</servlet-mapping>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>WSDL</web-resource-name>
+			<url-pattern>/ws/*</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection> 
+		<auth-constraint/>
+	</security-constraint> 
 </web-app>
 
